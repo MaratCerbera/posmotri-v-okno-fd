@@ -70,17 +70,16 @@ html {
 
 
 .search-form__textfield {
-  background-color: transparent;
   border: none;
+  background-color: transparent;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
   min-inline-size: 225px;
   min-block-size: 27px;
-  border-block-start: 1px solid white;
-  border-block-end: 1px solid white;
   color: #fff;
   font-family: inherit;
   font-size: inherit;
   appearance: none;
-  
 }
 
 .search-form__textfield:active {
@@ -98,7 +97,7 @@ html {
 
 
 .search-form__textfield:has(:focus-visible) {
-  border: none;
+  outline: none;
 }
 
 .search-form__fieldset {
@@ -112,8 +111,6 @@ html {
   font-size: 18px;
   font-family: 'Fira Sans Condensed', sans-serif;
   font-weight: 400;
-  line-height: 100%;
-  gap: 5px;
 }
 
 .search-form__checkbox-list {
@@ -133,20 +130,24 @@ html {
   height: 19px;
   border: 1px solid #fff;
   background-color:  transparent;
+  position: relative;
 
 }
 
 .search-form__pseudo-checkbox::after {
   content: "";
+  display: none;
+  position: absolute;
   width: 15px;
   height: 15px;
   background-color: #fff;
 }
 
 
-.search-form__checkbox:checked {
-  opacity: 1;
-  
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::after,
+.search-form__checkbox:active + .search-form__pseudo-checkbox::after {
+  display: block;
+
 }
 
 .search-form__checkbox:checked:focus-visible {
@@ -154,13 +155,16 @@ html {
 }
 
 .search-form__label:hover {
-  text-decoration: underline;
+  text-decoration: none;
   cursor: pointer;
+}
+
+.search-form__label:focus {
+  outline: none;
 }
 
 .search-form__label:has(:focus-visible) {
   outline: 1px solid #fff;
-  
 }
 
 .search-form__submit-button {
@@ -175,6 +179,7 @@ html {
   align-items: center;
   color: #fff;
   border: 1px solid white;
+  outline-offset: -3px;
 }
 
 .search-form__submit-button:active {
@@ -211,6 +216,15 @@ html {
   margin-left: 2px;
   margin-bottom: 2px;
   cursor: pointer;
+  outline-offset: -3px;
+}
+
+.more-button:focus {
+  outline: none;
+}
+
+.more-button:focus-visible {
+  outline: 1px solid #fff;
 }
 
 .content {
@@ -227,7 +241,7 @@ html {
 }
 
 .content__list-item {
-  display: block;
+  
   width: 100%;
   gap: 30px;
   padding-left: 3px;
